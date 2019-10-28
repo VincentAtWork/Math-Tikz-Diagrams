@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+%ATA, ATT, ATC, ATG, TAT, TTC, TCA, TCG, TGA, CAT, CGA, GAT
+\node at (0,0) [draw,shape = rectangle](ATA){ATA};
+\node at (3,0) [draw,shape = rectangle](TAT){TAT};
+\node at (0,3) [draw,shape = circle](A){A};
+\node at (3,3) [draw,shape = circle](B){B};
+\node at (6,1.5) [draw,shape = circle](C){C};
+\draw [->,shorten <=0pt, transform canvas={xshift=0,yshift=0.5ex}] (ATA) -- (TAT); 
+\draw [->,shorten <=0pt, transform canvas={xshift=0,yshift=-0.5ex}](TAT) -- (ATA);
+\end{tikzpicture}

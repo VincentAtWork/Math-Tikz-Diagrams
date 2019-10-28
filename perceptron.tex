@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+% \node at (0,6) [draw](Input Layer){Input Layer};
+% \node at (3,6) [draw](Hidden Layer){Hidden Layer};
+
+
+\node at (0, 4)[draw](IL){Input Layer};
+\node at (4, 4)[draw](HL){Hidden Layer};
+\node at (10, 4)[draw](OL){Output Layer};
+
+\draw[->] (IL) -- (HL);
+\draw[->] (HL) -- (OL);
+
+\node at (4,0)[draw,shape = circle](perceptron){perceptron};
+\node at (10,0)[draw,shape = circle](output){output};
+\foreach \y in {3,...,-3}
+{
+	\pgfmathtruncatemacro{\label}{4-\y};
+	\node at (0, \y)[draw,shape = circle](I\label){I\label};
+}
+\foreach \i in {1,...,7}
+{
+	\draw[->, -stealth] (I\i) -- (perceptron) node [midway,above] {$w_\i$} ;
+}
+\draw[->] (perceptron) -- (output)node [midway,above]  {$\sigma\left(w_0 + \sum\limits_{i=1}^{n}{w_ix_i}\right)$};
+
+\end{tikzpicture}

@@ -1,0 +1,46 @@
+\begin{tikzpicture}[scale = 0.8]
+\tikzstyle{every node}=[font=\small]
+\begin{axis}[
+	x = \textwidth/10,
+	y = 8cm/40,
+	axis y line=center,
+	axis x line= center,
+	%axis equal,
+	%grid=both,
+	xmax=5,xmin=-5,
+	ymin=-30,ymax=10,
+	%xtick={-10,...,10},
+	%ytick={-10,...,10},
+	anchor=center,
+	]
+
+\addplot[domain = -5:5, black, thick,samples=200] {2*x^3 -3*x^2 -12*x};
+\addlegendentry{$f(x)$};
+
+\foreach \x in {2} %Coordinates (below)
+{
+	\pgfmathtruncatemacro{\y}{2*(\x)^3 -3*(\x)^2 -12*(\x)};
+	\edef\temp{\noexpand\node[label = below:{$(\x,\y)$}, circle, fill, inner sep = 2pt] at (axis cs:\x,\y) {};}
+	\temp
+}
+
+\foreach \x in {-1} %Coordinates (above)
+{
+	\pgfmathtruncatemacro{\y}{2*(\x)^3 -3*(\x)^2 -12*(\x)};
+	\edef\temp{\noexpand\node[label = {$(\x,\y)$}, circle, fill, inner sep = 2pt] at (axis cs:\x,\y) {};}
+	\temp
+}
+
+
+\foreach \x in {-1,2} %Draw dashed
+{
+	\pgfmathtruncatemacro{\y}{2*(\x)^3 -3*(\x)^2 -12*(\x)};
+	\edef\temp{\noexpand\draw[dashed] (axis cs:\x,0) -- (axis cs:\x,\y);}
+	\temp
+	\edef\temp{\noexpand\draw[dashed] (axis cs:0,\y) -- (axis cs:\x,\y);}
+	\temp
+}
+\node[label = above left:{${\left(\frac{3+\sqrt{105}}{4},0\right)}$},circle, fill, inner sep = 2pt] at (axis cs:3.31,0){};
+\node[label = above left:{${\left(\frac{3-\sqrt{105}}{4},0\right)}$},circle, fill, inner sep = 2pt] at (axis cs:-1.81,0){};
+\end{axis}
+\end{tikzpicture}

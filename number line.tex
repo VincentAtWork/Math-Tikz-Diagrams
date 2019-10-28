@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+%ATA, ATT, ATC, ATG, TAT, TTC, TCA, TCG, TGA, CAT, CGA, GAT
+%\pgfmathtruncatemacro{\label}{3-\y}; [For math]
+%\draw  (a) -- node [above] {$\Delta x$} (b);
+\node at (-3,0) [](Start){};
+\node at (4,0) [](End){};
+\draw[->] (Start) -- (End);
+
+\foreach \i in {-1,2} %Vertical Lines
+\draw[shift={(\i,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+
+\foreach \i in {-1,2} %Lables
+\node[label=above:{\i}] at (\i ,0) [](p_\i){};
+
+\draw (Start) -- node [above] {+} (p_-1);
+\draw (p_-1) -- node [above] {-} (p_2);
+\draw (p_2) -- node [above] {+} (End);
+\end{tikzpicture}
